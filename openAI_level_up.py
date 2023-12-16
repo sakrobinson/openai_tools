@@ -50,13 +50,14 @@ def download_image(url, filename):
 
 def generate_car_character_image(description, i):
     # Generate an image based on the description
-     response = client.images.generate(model="dall-e-3",
+    response = openai.Image.create(
+        model="dall-e-3",
         prompt=description,
         size="1024x1024",
         quality="standard",
         n=1,
     )
-    image_url = response.data[0].url
+    image_url = response.data[0].url  # This line should be indented to match the block
     filename = f"random{i}.jpg"
     download_image(image_url, filename)
     return filename
