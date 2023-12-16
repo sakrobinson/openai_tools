@@ -39,7 +39,7 @@ def generate_car_character_description():
     client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),
 )
-    response = client.completions.create(engine="text-davinci-003",
+    response = client.completions.create(model="text-davinci-003",
       prompt="Give me a random descriptive sentence."
     )
     return response.choices[0].text.strip()
