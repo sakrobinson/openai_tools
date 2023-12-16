@@ -1,5 +1,6 @@
 # Load libraries to help with installing dependencies
 import subprocess
+import sys
 import pkg_resources
 
 # List of required packages
