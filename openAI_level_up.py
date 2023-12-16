@@ -18,6 +18,8 @@ if missing_packages:
     subprocess.check_call([python, '-m', 'pip', 'install', *missing_packages], stdout=subprocess.DEVNULL)
 
 from openai import OpenAI
+from dotenv import load_dotenv
+
 # Load your environment variables. Mainly, the API Key
 load_dotenv() 
 client = OpenAI()
@@ -25,7 +27,7 @@ client = OpenAI()
 import openai
 import requests
 from openai import OpenAI
-from dotenv import load_dotenv
+
 
 # Set your preferred number of characters
 num_characters = 33  # Number of characters to generate
