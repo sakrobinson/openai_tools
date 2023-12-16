@@ -37,6 +37,7 @@ if openai.api_key == 'NONE':
 
 def generate_car_character_description():
     # Generate a descriptive sentence
+    client = OpenAI()
     response = client.completions.create(engine="text-davinci-003",
       prompt="Give me a random descriptive sentence."
     )
