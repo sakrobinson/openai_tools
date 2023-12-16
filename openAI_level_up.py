@@ -37,8 +37,7 @@ if openai.api_key == 'NONE':
 
 def generate_car_character_description():
     # Generate a descriptive sentence
-    response = openai.Completion.create(
-      engine="text-davinci-003",
+    response = client.completions.create(engine="text-davinci-003",
       prompt="Give me a random descriptive sentence."
     )
     return response.choices[0].text.strip()
@@ -51,8 +50,7 @@ def download_image(url, filename):
 
 def generate_car_character_image(description, i):
     # Generate an image based on the description
-    response = openai.Image.create(
-        model="dall-e-3",
+     response = client.images.generate(model="dall-e-3",
         prompt=description,
         size="1024x1024",
         quality="standard",
