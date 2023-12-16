@@ -1,3 +1,20 @@
+# Load libraries to help with installing dependencies
+import subprocess
+import pkg_resources
+
+# List of required packages
+required_packages = {'openai', 'requests'}
+
+# Get currently installed dependencies
+installed_packages = {pkg.key for pkg in pkg_resources.working_set}
+
+missing_packages = required_packages - installed_packages
+
+# Install needed packages if they are missing =
+if missing_packages:
+    python = sys.executable
+    subprocess.check_call([python, '-m', 'pip', 'install', *missing_packages], stdout=subprocess.DEVNULL)
+
 import openai
 import requests
 
