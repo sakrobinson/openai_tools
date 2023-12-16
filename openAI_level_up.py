@@ -18,6 +18,7 @@ if missing_packages:
 
 import openai
 import requests
+from openai import OpenAI, AsyncOpenAI
 
 # Set your OpenAI API key
 openai.api_key = 'NONE'
