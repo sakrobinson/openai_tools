@@ -19,10 +19,11 @@ if missing_packages:
 
 import openai
 import requests
-from openai import OpenAI, AsyncOpenAI
+from openai import OpenAI
+from dotenv import load_dotenv
 
-# Set your OpenAI API key
-openai.api_key = 'NONE'
+# Load your environment variables. Mainly, the API Key
+load_dotenv() 
 
 # Set your preferred number of characters
 num_characters = 33  # Number of characters to generate
@@ -32,10 +33,6 @@ if num_characters == 33:
     user_input = input(f"The default number of car characters to generate is {num_characters}. Would you like to change it? (yes/no): ")
     if user_input.lower() == 'yes':
         num_characters = int(input("How many car characters would you like to generate? "))
-
-# Prompt the user for an API key if it's set to 'NONE'
-if openai.api_key == 'NONE':
-    openai.api_key = input("Please enter your OpenAI API key: ")
 
 def generate_car_character_description():
     # Generate a descriptive sentence
