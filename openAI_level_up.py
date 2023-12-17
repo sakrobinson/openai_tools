@@ -44,7 +44,7 @@ def generate_character_description():
     api_key=os.environ.get("OPENAI_API_KEY"),
 )
     response = client.completions.create(model="text-davinci-003",
-      prompt="Give me a random descriptive sentence, without gender."
+      prompt="Give me a random descriptive sentence, as bland and uncontroversial as possible, avoiding anything that might trigger a content violation."
     )
     return response.choices[0].text.strip()
 
