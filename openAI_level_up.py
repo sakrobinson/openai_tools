@@ -34,17 +34,17 @@ num_characters = 33  # Number of characters to generate
 
 # Prompt the user for a different number if the default is detected
 if num_characters == 33:
-    user_input = input(f"The default number of car characters to generate is {num_characters}. Would you like to change it? (yes/no): ")
+    user_input = input(f"The default number of characters to generate is {num_characters}. Would you like to change it? (yes/no): ")
     if user_input.lower() == 'yes':
-        num_characters = int(input("How many car characters would you like to generate? "))
+        num_characters = int(input("How many characters would you like to generate? "))
 
-def generate_car_character_description():
+def generate_character_description():
     # Generate a descriptive sentence
     client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),
 )
     response = client.completions.create(model="text-davinci-003",
-      prompt="Give me a random descriptive sentence."
+      prompt="Give me a random descriptive sentence, without gender."
     )
     return response.choices[0].text.strip()
 
@@ -54,7 +54,7 @@ def download_image(url, filename):
         with open(filename, 'wb') as file:
             file.write(response.content)
 
-def generate_car_character_image(description, i):
+def generate_character_image(description, i):
     # Generate an image based on the description
     response = client.images.generate(model="dall-e-3",
     prompt=description,
@@ -67,7 +67,7 @@ def generate_car_character_image(description, i):
     return filename
 
 for i in range(num_characters):
-    description = generate_car_character_description()
-    print(f"Car Character Description {i+1}: {description}")
-    filename = generate_car_character_image(description, i+1)
+    description = generate_character_description()
+    print(f"Character Description {i+1}: {description}")
+    filename = generate_character_image(description, i+1)
     print(f"Downloaded Image: {filename}")
