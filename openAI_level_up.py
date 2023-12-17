@@ -66,9 +66,6 @@ def generate_car_character_image(description, i):
     download_image(image_url, filename)
     return filename
 
-
-num_characters = 33  # Number of characters to generate
-
 for i in range(num_characters):
     description = generate_car_character_description()
     print(f"Car Character Description {i+1}: {description}")
